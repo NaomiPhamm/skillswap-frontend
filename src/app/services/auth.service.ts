@@ -11,7 +11,6 @@ export interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-
   private readonly BASE_URL = 'https://stingray-app-wxhhn.ondigitalocean.app';
 
   constructor(private readonly http: HttpClient) {}

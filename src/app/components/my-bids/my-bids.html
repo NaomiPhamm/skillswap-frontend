@@ -1,1 +1,17 @@
-<p>my-bids works!</p>
+<h2>My Bids</h2>
+
+<p style="color: red;">{{ errorMessage }}</p>
+
+<div *ngFor="let bid of bids">
+  <p><strong>Proposal ID:</strong> {{ bid.id }}</p>
+  <p><strong>Price:</strong> {{ bid.price }}</p>
+  <p><strong>Status:</strong> {{ bid.status }}</p>
+  <p><strong>Message:</strong> {{ bid.message || bid.cover_letter }}</p>
+
+  <p>
+    <strong>Job:</strong>
+    <a [routerLink]="['/jobs', bid.job_id]">View Job</a>
+  </p>
+
+  <hr>
+</div>

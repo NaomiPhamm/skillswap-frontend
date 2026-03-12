@@ -23,12 +23,17 @@ export class Login {
   submit(): void {
     this.errorMessage = '';
 
+    console.log('email =', this.email);
+    console.log('password =', this.password);
+
     this.authService.login(this.email, this.password).subscribe({
       next: (res: LoginResponse) => {
+        console.log('login success', res);
         this.authService.setToken(res.token);
         this.router.navigate(['/jobs']);
       },
       error: (err: HttpErrorResponse) => {
+        console.log('login error', err);
         this.errorMessage = err.error?.error || 'Login failed';
       }
     });

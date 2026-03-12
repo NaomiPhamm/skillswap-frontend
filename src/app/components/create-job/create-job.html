@@ -1,1 +1,55 @@
-<p>create-job works!</p>
+<h2>Create Job</h2>
+
+<p style="color: red;">{{ errorMessage }}</p>
+<p style="color: green;">{{ successMessage }}</p>
+
+<form (ngSubmit)="submit()">
+  <div>
+    <label>Title</label>
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      required
+    >
+  </div>
+
+  <br>
+
+  <div>
+    <label>Description</label>
+    <textarea
+      name="description"
+      [(ngModel)]="description"
+      required
+    ></textarea>
+  </div>
+
+  <br>
+
+  <div>
+    <label>Budget</label>
+    <input
+      type="text"
+      name="budget"
+      [(ngModel)]="budget"
+      required
+    >
+  </div>
+
+  <br>
+
+  <div>
+    <label>Category</label>
+    <input
+      type="text"
+      name="category"
+      [(ngModel)]="category"
+      required
+    >
+  </div>
+
+  <br>
+
+  <button type="submit">Create Job</button>
+</form>

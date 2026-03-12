@@ -1,1 +1,39 @@
-<p>jobs works!</p>
+<h2>Jobs</h2>
+
+<div>
+  <label>Category</label>
+  <input
+    type="text"
+    [(ngModel)]="category"
+    name="category"
+    placeholder="Enter category"
+  >
+
+  <label>Min Budget</label>
+  <input
+    type="text"
+    [(ngModel)]="minBudget"
+    name="minBudget"
+    placeholder="Enter minimum budget"
+  >
+
+  <button (click)="loadJobs()">Search</button>
+</div>
+
+<p style="color: red;">{{ errorMessage }}</p>
+
+<hr>
+
+<div *ngFor="let job of jobs">
+  <h3>
+    <a [routerLink]="['/jobs', job.id]">
+      {{ job.title }}
+    </a>
+  </h3>
+
+  <p>{{ job.description }}</p>
+  <p>Category: {{ job.category }}</p>
+  <p>Budget: {{ job.budget }}</p>
+  <p>Status: {{ job.status }}</p>
+  <hr>
+</div>

@@ -1,1 +1,16 @@
-<p>my-postings works!</p>
+<h2>My Postings</h2>
+
+<p style="color: red;">{{ errorMessage }}</p>
+
+<div *ngFor="let job of jobs">
+  <h3>
+    <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
+  </h3>
+
+  <p>{{ job.description }}</p>
+  <p><strong>Category:</strong> {{ job.category }}</p>
+  <p><strong>Budget:</strong> {{ job.budget }}</p>
+  <p><strong>Status:</strong> {{ job.status }}</p>
+
+  <hr>
+</div>
