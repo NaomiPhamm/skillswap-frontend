@@ -1,1 +1,19 @@
-<p>navbar works!</p>
+<nav>
+  <a routerLink="/">Home</a>
+  <a routerLink="/platform-stats">Platform Stats</a>
+
+  @if (!isLoggedIn()) {
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+  }
+
+  @if (isLoggedIn()) {
+    <a routerLink="/jobs">Jobs</a>
+    <a routerLink="/jobs/new">Post Job</a>
+    <a routerLink="/my-postings">My Postings</a>
+    <a routerLink="/my-bids">My Bids</a>
+    <a routerLink="/profile">Profile</a>
+    <button (click)="logout()">Logout</button>
+  }
+</nav>
+<hr>
