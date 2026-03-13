@@ -8,8 +8,16 @@
 
     <div class="hero-buttons">
       <a routerLink="/jobs">Browse Jobs</a>
-      <a routerLink="/login">Login</a>
-      <a routerLink="/register">Register</a>
+
+      @if (!isLoggedIn()) {
+        <a routerLink="/login">Login</a>
+        <a routerLink="/register">Register</a>
+      }
+
+      @if (isLoggedIn()) {
+        <a routerLink="/jobs/new">Post Job</a>
+        <a routerLink="/my-bids">My Bids</a>
+      }
     </div>
   </section>
 
@@ -36,11 +44,24 @@
 
   <section class="cta">
     <h2>Start Using SkillSwap</h2>
-    <p>Explore jobs or create your account to begin.</p>
 
-    <div class="hero-buttons">
-      <a routerLink="/jobs">View Jobs</a>
-      <a routerLink="/platform-stats">Platform Stats</a>
-    </div>
+    @if (!isLoggedIn()) {
+      <p>Explore jobs or create your account to begin.</p>
+
+      <div class="hero-buttons">
+        <a routerLink="/jobs">View Jobs</a>
+        <a routerLink="/platform-stats">Platform Stats</a>
+      </div>
+    }
+
+    @if (isLoggedIn()) {
+      <p>Continue your work by browsing jobs, posting a job, or checking your bids.</p>
+
+      <div class="hero-buttons">
+        <a routerLink="/jobs">View Jobs</a>
+        <a routerLink="/jobs/new">Post Job</a>
+        <a routerLink="/platform-stats">Platform Stats</a>
+      </div>
+    }
   </section>
 </div>

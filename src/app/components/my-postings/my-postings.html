@@ -1,16 +1,31 @@
-<h2>My Postings</h2>
+<div class="my-postings-page">
+  <div class="page-header">
+    <h2>My Postings</h2>
+    <p>Manage the jobs you have posted on SkillSwap.</p>
+  </div>
 
-<p style="color: red;">{{ errorMessage }}</p>
+  <p class="error-text">{{ errorMessage }}</p>
 
-<div *ngFor="let job of jobs">
-  <h3>
-    <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
-  </h3>
+  <div class="empty-box" *ngIf="jobs.length === 0">
+    <p>You have not posted any jobs yet.</p>
+  </div>
 
-  <p>{{ job.description }}</p>
-  <p><strong>Category:</strong> {{ job.category }}</p>
-  <p><strong>Budget:</strong> {{ job.budget }}</p>
-  <p><strong>Status:</strong> {{ job.status }}</p>
+  <div class="postings-grid">
+    <div class="posting-card" *ngFor="let job of jobs">
+      <h3>
+        <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
+      </h3>
 
-  <hr>
+      <p class="job-description">
+        {{ job.description || 'No description provided.' }}
+      </p>
+
+      <p><strong>Category:</strong> {{ job.category || 'N/A' }}</p>
+      <p><strong>Budget:</strong> {{ job.budget }}</p>
+      <p>
+        <strong>Status:</strong>
+        <span class="status-badge">{{ job.status }}</span>
+      </p>
+    </div>
+  </div>
 </div>

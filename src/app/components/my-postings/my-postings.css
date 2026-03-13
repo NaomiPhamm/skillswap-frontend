@@ -1,0 +1,88 @@
+.my-postings-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 50px 20px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.page-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 16px;
+}
+
+.error-text {
+  color: #dc2626;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.empty-box {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.postings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.posting-card {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.posting-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.posting-card h3 a {
+  text-decoration: none;
+  color: #1d4ed8;
+  font-size: 22px;
+}
+
+.posting-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.job-description {
+  color: #475569;
+  line-height: 1.5;
+  min-height: 48px;
+  margin-bottom: 14px;
+}
+
+.posting-card p {
+  margin: 8px 0;
+  color: #334155;
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}

@@ -1,55 +1,62 @@
-<h2>Create Job</h2>
+<div class="create-job-page">
+  <div class="create-job-card">
+    <div class="create-job-header">
+      <h2>Create Job</h2>
+      <p>Post a new job for freelancers to discover and apply.</p>
+    </div>
 
-<p style="color: red;">{{ errorMessage }}</p>
-<p style="color: green;">{{ successMessage }}</p>
+    <p class="error-text">{{ errorMessage }}</p>
+    <p class="success-text">{{ successMessage }}</p>
 
-<form (ngSubmit)="submit()">
-  <div>
-    <label>Title</label>
-    <input
-      type="text"
-      name="title"
-      [(ngModel)]="title"
-      required
-    >
+    <form (ngSubmit)="submit()" class="create-job-form">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          name="title"
+          [(ngModel)]="title"
+          placeholder="Enter job title"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+          placeholder="Describe the job clearly"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="budget">Budget</label>
+        <input
+          id="budget"
+          type="text"
+          name="budget"
+          [(ngModel)]="budget"
+          placeholder="Enter budget"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input
+          id="category"
+          type="text"
+          name="category"
+          [(ngModel)]="category"
+          placeholder="Enter category"
+          required
+        >
+      </div>
+
+      <button type="submit">Create Job</button>
+    </form>
   </div>
-
-  <br>
-
-  <div>
-    <label>Description</label>
-    <textarea
-      name="description"
-      [(ngModel)]="description"
-      required
-    ></textarea>
-  </div>
-
-  <br>
-
-  <div>
-    <label>Budget</label>
-    <input
-      type="text"
-      name="budget"
-      [(ngModel)]="budget"
-      required
-    >
-  </div>
-
-  <br>
-
-  <div>
-    <label>Category</label>
-    <input
-      type="text"
-      name="category"
-      [(ngModel)]="category"
-      required
-    >
-  </div>
-
-  <br>
-
-  <button type="submit">Create Job</button>
-</form>
+</div>

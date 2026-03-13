@@ -1,17 +1,39 @@
-<h2>My Bids</h2>
+<div class="my-bids-page">
+  <div class="page-header">
+    <h2>My Bids</h2>
+    <p>Track the proposals you have submitted to jobs.</p>
+  </div>
 
-<p style="color: red;">{{ errorMessage }}</p>
+  <p class="error-text">{{ errorMessage }}</p>
 
-<div *ngFor="let bid of bids">
-  <p><strong>Proposal ID:</strong> {{ bid.id }}</p>
-  <p><strong>Price:</strong> {{ bid.price }}</p>
-  <p><strong>Status:</strong> {{ bid.status }}</p>
-  <p><strong>Message:</strong> {{ bid.message || bid.cover_letter }}</p>
+  <div class="empty-box" *ngIf="bids.length === 0">
+    <p>You have not submitted any bids yet.</p>
+  </div>
 
-  <p>
-    <strong>Job:</strong>
-    <a [routerLink]="['/jobs', bid.job_id]">View Job</a>
-  </p>
+  <div class="bids-grid">
+    <div class="bid-card" *ngFor="let bid of bids">
+      <p>
+        <strong>Proposal:</strong>
+        <span class="proposal-id" title="{{ bid.id }}">
+          #{{ bid.id.slice(-6) }}
+        </span>
+      </p>
 
-  <hr>
+      <p><strong>Price:</strong> {{ bid.price }}</p>
+
+      <p>
+        <strong>Status:</strong>
+        <span class="status-badge">{{ bid.status }}</span>
+      </p>
+
+      <p class="bid-message">
+        <strong>Message:</strong>
+        {{ bid.message || bid.cover_letter || 'No message provided.' }}
+      </p>
+
+      <div class="bid-actions">
+        <a [routerLink]="['/jobs', bid.job_id]">View Job</a>
+      </div>
+    </div>
+  </div>
 </div>

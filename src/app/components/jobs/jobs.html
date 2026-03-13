@@ -1,39 +1,52 @@
-<h2>Jobs</h2>
+<div class="jobs-page">
+  <div class="jobs-header">
+    <h2>Jobs</h2>
+    <p>Browse open jobs and find the right opportunity.</p>
+  </div>
 
-<div>
-  <label>Category</label>
-  <input
-    type="text"
-    [(ngModel)]="category"
-    name="category"
-    placeholder="Enter category"
-  >
+  <div class="search-box">
+    <div class="search-group">
+      <label for="category">Category</label>
+      <input
+        id="category"
+        type="text"
+        [(ngModel)]="category"
+        name="category"
+        placeholder="Enter category"
+      >
+    </div>
 
-  <label>Min Budget</label>
-  <input
-    type="text"
-    [(ngModel)]="minBudget"
-    name="minBudget"
-    placeholder="Enter minimum budget"
-  >
+    <div class="search-group">
+      <label for="minBudget">Min Budget</label>
+      <input
+        id="minBudget"
+        type="text"
+        [(ngModel)]="minBudget"
+        name="minBudget"
+        placeholder="Enter minimum budget"
+      >
+    </div>
 
-  <button (click)="loadJobs()">Search</button>
-</div>
+    <div class="search-button-area">
+      <button (click)="loadJobs()">Search</button>
+    </div>
+  </div>
 
-<p style="color: red;">{{ errorMessage }}</p>
+  <p class="error-text">{{ errorMessage }}</p>
 
-<hr>
+  <div class="jobs-grid">
+    <div class="job-card" *ngFor="let job of jobs">
+      <h3>
+        <a [routerLink]="['/jobs', job.id]">
+          {{ job.title }}
+        </a>
+      </h3>
 
-<div *ngFor="let job of jobs">
-  <h3>
-    <a [routerLink]="['/jobs', job.id]">
-      {{ job.title }}
-    </a>
-  </h3>
+      <p class="job-description">{{ job.description || 'No description provided.' }}</p>
 
-  <p>{{ job.description }}</p>
-  <p>Category: {{ job.category }}</p>
-  <p>Budget: {{ job.budget }}</p>
-  <p>Status: {{ job.status }}</p>
-  <hr>
+      <p><strong>Category:</strong> {{ job.category || 'N/A' }}</p>
+      <p><strong>Budget:</strong> {{ job.budget }}</p>
+      <p><strong>Status:</strong> {{ job.status }}</p>
+    </div>
+  </div>
 </div>

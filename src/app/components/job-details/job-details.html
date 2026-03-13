@@ -1,126 +1,147 @@
-<h2>Job Details</h2>
-
-<p style="color: red;">{{ errorMessage }}</p>
-<p style="color: green;">{{ successMessage }}</p>
-
-@if (job) {
-  <h3>{{ job.title }}</h3>
-  <p>{{ job.description }}</p>
-  <p><strong>Budget:</strong> {{ job.budget }}</p>
-  <p><strong>Category:</strong> {{ job.category }}</p>
-  <p><strong>Status:</strong> {{ job.status }}</p>
-
-  @if (job.owner) {
-    <p><strong>Owner:</strong> {{ job.owner.username || job.owner.name }}</p>
-  }
-
-  @if (job.freelancer) {
-    <p><strong>Freelancer:</strong> {{ job.freelancer.username || job.freelancer.name }}</p>
-  }
-
-  <hr>
-
-  @if (job.status === 'open') {
-    <h3>Submit Proposal</h3>
-
-    <div>
-      <label>Price</label>
-      <input
-        type="text"
-        [(ngModel)]="proposalPrice"
-        name="proposalPrice"
-        placeholder="Enter your price"
-      >
+<div class="job-details-page">
+  <div class="job-card" *ngIf="job">
+    <div class="job-header">
+      <div>
+        <h2>Job Details</h2>
+        <h3>{{ job.title }}</h3>
+      </div>
     </div>
 
-    <br>
+    <p class="error-text">{{ errorMessage }}</p>
+    <p class="success-text">{{ successMessage }}</p>
 
-    <div>
-      <label>Message</label>
-      <textarea
-        [(ngModel)]="proposalMessage"
-        name="proposalMessage"
-        placeholder="Write your message"
-      ></textarea>
+    <p class="job-description">{{ job.description || 'No description provided.' }}</p>
+
+    <div class="job-info-grid">
+      <p><strong>Budget:</strong> {{ job.budget }}</p>
+      <p><strong>Category:</strong> {{ job.category }}</p>
+      <p>
+        <strong>Status:</strong>
+        <span class="status-badge">{{ job.status }}</span>
+      </p>
+
+      @if (job.owner) {
+        <p><strong>Owner:</strong> {{ job.owner.username || job.owner.name }}</p>
+      }
+
+      @if (job.freelancer) {
+        <p><strong>Freelancer:</strong> {{ job.freelancer.username || job.freelancer.name }}</p>
+      }
     </div>
+  </div>
 
-    <br>
+  @if (job && job.status === 'open') {
+    <div class="section-card">
+      <h3>Submit Proposal</h3>
 
-    <button (click)="submitProposal()">Submit Proposal</button>
+      <div class="form-group">
+        <label>Price</label>
+        <input
+          type="text"
+          [(ngModel)]="proposalPrice"
+          name="proposalPrice"
+          placeholder="Enter your price"
+        >
+      </div>
 
-    <hr>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea
+          [(ngModel)]="proposalMessage"
+          name="proposalMessage"
+          placeholder="Write your message"
+        ></textarea>
+      </div>
+
+      <button class="primary-btn" (click)="submitProposal()">Submit Proposal</button>
+    </div>
   }
 
   @if (canViewProposals) {
-    <h3>Proposals</h3>
+    <div class="section-card">
+      <h3>Proposals</h3>
 
-    <div *ngFor="let proposal of proposals">
-      <p><strong>Proposal ID:</strong> {{ proposal.id }}</p>
-      <p><strong>Price:</strong> {{ proposal.price }}</p>
-      <p><strong>Status:</strong> {{ proposal.status }}</p>
-      <p><strong>Message:</strong> {{ proposal.message || proposal.cover_letter }}</p>
+      <div class="proposal-list">
+        <div class="proposal-card" *ngFor="let proposal of proposals">
+         <p><strong>Proposal:</strong><span title="{{ proposal.id }}">#{{ proposal.id.slice(-6) }}</span></p>
+          <p><strong>Price:</strong> {{ proposal.price }}</p>
+          <p><strong>Status:</strong> {{ proposal.status }}</p>
+          <p><strong>Message:</strong> {{ proposal.message || proposal.cover_letter }}</p>
 
-      @if (job.status === 'open') {
-        <button (click)="acceptProposal(proposal.id)">Accept Proposal</button>
-      }
-
-      <hr>
+          @if (job && job.status === 'open') {
+            <button class="primary-btn" (click)="acceptProposal(proposal.id)">Accept Proposal</button>
+          }
+        </div>
+      </div>
     </div>
   }
 
-  <h3>Complete Job</h3>
-  @if (job.status === 'in_progress') {
-    <button (click)="completeJob()">Mark Job as Completed</button>
+  <div class="section-card" *ngIf="job">
+    <h3>Complete Job</h3>
+
+    @if (job.status === 'in_progress') {
+      <button class="primary-btn" (click)="completeJob()">Mark Job as Completed</button>
+    } @else {
+      <p class="muted-text">This action is available only when the job is in progress.</p>
+    }
+  </div>
+
+  <div class="section-card" *ngIf="job">
+    <h3>Submit Review</h3>
+
+    @if (job.status === 'completed') {
+      <p><strong>Reviewing:</strong> {{ reviewTargetUsername || 'No target available' }}</p>
+
+      <div class="form-group">
+        <label>Rating</label>
+        <input
+          type="text"
+          [(ngModel)]="reviewRating"
+          name="reviewRating"
+          placeholder="1 to 5"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Comment</label>
+        <textarea
+          [(ngModel)]="reviewComment"
+          name="reviewComment"
+          placeholder="Write your review"
+        ></textarea>
+      </div>
+
+      <button class="primary-btn" (click)="submitReview()">Submit Review</button>
+    } @else {
+      <p class="muted-text">Reviews are available only when the job is completed.</p>
+    }
+  </div>
+
+  @if (job && job.status === 'completed') {
+    <div class="section-card">
+      <h3>Reviews About Owner</h3>
+
+      <div class="review-list">
+        <div class="review-card" *ngFor="let review of ownerReviews">
+          <p><strong>Rating:</strong> {{ review.rating }}</p>
+          <p><strong>Comment:</strong> {{ review.comment || review.message || review.review_text }}</p>
+        </div>
+
+        <p class="muted-text" *ngIf="ownerReviews.length === 0">No reviews yet.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Reviews About Freelancer</h3>
+
+      <div class="review-list">
+        <div class="review-card" *ngFor="let review of freelancerReviews">
+          <p><strong>Rating:</strong> {{ review.rating }}</p>
+          <p><strong>Comment:</strong> {{ review.comment || review.message || review.review_text }}</p>
+        </div>
+
+        <p class="muted-text" *ngIf="freelancerReviews.length === 0">No reviews yet.</p>
+      </div>
+    </div>
   }
-
-  <hr>
-
-  <h3>Submit Review</h3>
-
-  @if (job.status === 'completed') {
-    <p><strong>Reviewing:</strong> {{ reviewTargetUsername || 'No target available' }}</p>
-
-    <div>
-      <label>Rating</label>
-      <input
-        type="text"
-        [(ngModel)]="reviewRating"
-        name="reviewRating"
-        placeholder="1 to 5"
-      >
-    </div>
-
-    <br>
-
-    <div>
-      <label>Comment</label>
-      <textarea
-        [(ngModel)]="reviewComment"
-        name="reviewComment"
-        placeholder="Write your review"
-      ></textarea>
-    </div>
-
-    <br>
-
-    <button (click)="submitReview()">Submit Review</button>
-
-    <hr>
-
-    <h3>Reviews About Owner</h3>
-
-    <div *ngFor="let review of ownerReviews">
-      <p><strong>Rating:</strong> {{ review.rating }}</p>
-      <p><strong>Comment:</strong> {{ review.comment || review.message || review.review_text }}</p>
-      <hr>
-    </div>
-
-    <h3>Reviews About Freelancer</h3>
-
-    <div *ngFor="let review of freelancerReviews">
-      <p><strong>Rating:</strong> {{ review.rating }}</p>
-      <p><strong>Comment:</strong> {{ review.comment || review.message || review.review_text }}</p>
-      <hr>
-    </div>
-  }
-}
+</div>

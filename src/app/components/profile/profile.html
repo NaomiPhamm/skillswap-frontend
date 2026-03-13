@@ -1,1 +1,44 @@
-<p>profile works!</p>
+<div class="profile-page">
+  <div class="page-header">
+    <h2>My Profile</h2>
+    <p>View your public and account information.</p>
+  </div>
+
+  <p class="error-text">{{ errorMessage }}</p>
+
+  <div class="profile-card" *ngIf="user">
+    <div class="profile-top">
+      <div class="avatar-box">
+        {{ (user.username || user.name || 'U').charAt(0).toUpperCase() }}
+      </div>
+
+      <div class="profile-main">
+        <h3>{{ user.name || 'No name' }}</h3>
+        <p class="username-text">@{{ user.username || 'unknown' }}</p>
+        <p class="email-text">{{ user.email || 'No email available' }}</p>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="info-card">
+        <h4>Bio</h4>
+        <p>{{ user.bio || 'No bio provided.' }}</p>
+      </div>
+
+      <div class="info-card">
+        <h4>Skills</h4>
+        <p>{{ getSkillsText() }}</p>
+      </div>
+
+      <div class="info-card">
+        <h4>Rating</h4>
+        <p>{{ user.rating_avg ?? 0 }}</p>
+      </div>
+
+      <div class="info-card">
+        <h4>Completed Jobs</h4>
+        <p>{{ user.completed_jobs ?? 0 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
