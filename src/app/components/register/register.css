@@ -1,0 +1,91 @@
+.register-container
+{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f6;
+    padding: 20px;
+}
+
+.register-card
+{
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title
+{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group
+{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+label
+{
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input,
+textarea
+{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+textarea
+{
+    resize: vertical;
+}
+
+button
+{
+    width: 100%;
+    padding: 10px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover
+{
+    background-color: #1d4ed8;
+}
+
+.success-message
+{
+    color: green;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.error-message
+{
+    color: red;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.suggestion-message
+{
+    color: #2563eb;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 500;
+}

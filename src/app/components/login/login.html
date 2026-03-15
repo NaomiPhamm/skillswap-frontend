@@ -1,27 +1,41 @@
-<h2>Login</h2>
+<div class="login-container">
 
-<form (ngSubmit)="submit()">
-  <div>
-    <label>Email</label>
-    <input
-      type="email"
-      name="email"
-      [(ngModel)]="email"
-      required
-    >
+  <div class="login-card">
+
+    <h2 class="title">Login</h2>
+
+    <form (ngSubmit)="submit()">
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+        >
+      </div>
+
+      <button type="submit">
+        Login
+      </button>
+
+    </form>
+
+    <p class="error-message">
+      {{ errorMessage }}
+    </p>
+
   </div>
 
-  <div>
-    <label>Password</label>
-    <input
-      type="password"
-      name="password"
-      [(ngModel)]="password"
-      requirqed
-    >
-  </div>
-
-  <button type="submit">Login</button>
-</form>
-
-<p style="color: red;">{{ errorMessage }}</p>
+</div>
