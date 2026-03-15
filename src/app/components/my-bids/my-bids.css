@@ -1,101 +1,137 @@
-.my-bids-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px 50px 20px;
+.my-bids-page
+{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 60px 24px;
 }
 
-.page-header {
-  margin-bottom: 24px;
+.page-header
+{
+    margin-bottom: 28px;
 }
 
-.page-header h2 {
-  font-size: 32px;
-  margin-bottom: 8px;
-  color: #1e293b;
+.page-header h2
+{
+    font-size: 38px;
+    margin-bottom: 10px;
+    color: #b03060;
 }
 
-.page-header p {
-  margin: 0;
-  color: #64748b;
-  font-size: 16px;
+.page-header p
+{
+    margin: 0;
+    color: #7a5c6b;
+    font-size: 17px;
 }
 
-.error-text {
-  color: #dc2626;
-  margin-bottom: 20px;
-  font-weight: 500;
+.error-text
+{
+    color: #d63384;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
-.empty-box {
-  background-color: #f8fafc;
-  border: 1px dashed #cbd5e1;
-  border-radius: 12px;
-  padding: 30px;
-  text-align: center;
-  color: #64748b;
-  margin-bottom: 20px;
+.empty-box
+{
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px dashed rgba(255, 192, 203, 0.4);
+    border-radius: 22px;
+    padding: 36px;
+    text-align: center;
+    color: #8a7080;
+    margin-bottom: 24px;
+
+    backdrop-filter: blur(10px);
 }
 
-.bids-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+.bids-grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
 }
 
-.bid-card {
-  background-color: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+.bid-card
+{
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 192, 203, 0.32);
+    border-radius: 22px;
+    padding: 22px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 8px 22px rgba(255, 182, 193, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.bid-card p {
-  margin: 10px 0;
-  color: #334155;
+.bid-card:hover
+{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(255, 182, 193, 0.2);
 }
 
-.bid-message {
-  line-height: 1.5;
-  min-height: 48px;
+.bid-card p
+{
+    margin: 10px 0;
+    color: #5c4b56;
+    line-height: 1.6;
 }
 
-.proposal-id {
-  display: inline-block;
-  background-color: #e2e8f0;
-  color: #1e293b;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  font-family: monospace;
+.bid-message
+{
+    min-height: 52px;
 }
 
-.status-badge {
-  display: inline-block;
-  background-color: #dbeafe;
-  color: #1d4ed8;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
+.proposal-id
+{
+    display: inline-block;
+    background: #ffe4ef;
+    color: #b03060;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 192, 203, 0.4);
+    font-family: monospace;
 }
 
-.bid-actions {
-  margin-top: 16px;
+.status-badge
+{
+    display: inline-block;
+    background: #fce7f3;
+    color: #c25283;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 192, 203, 0.35);
 }
 
-.bid-actions a {
-  display: inline-block;
-  text-decoration: none;
-  background-color: #2563eb;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
+.bid-actions
+{
+    margin-top: 18px;
 }
 
-.bid-actions a:hover {
-  background-color: #1d4ed8;
+.bid-actions a
+{
+    display: inline-block;
+    text-decoration: none;
+
+    background: linear-gradient(135deg, #f8a8c8, #f48fb1);
+    color: white;
+
+    padding: 9px 16px;
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    box-shadow: 0 6px 16px rgba(248, 168, 200, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bid-actions a:hover
+{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(248, 168, 200, 0.34);
 }

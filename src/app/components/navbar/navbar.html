@@ -1,19 +1,14 @@
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/platform-stats">Platform Stats</a>
+<nav class="navbar">
 
-  @if (!isLoggedIn()) {
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
-  }
-
-  @if (isLoggedIn()) {
-    <a routerLink="/jobs">Jobs</a>
-    <a routerLink="/jobs/new">Post Job</a>
+  <div class="nav-center">
+    <a routerLink="/">Home</a>
+    <a href="#jobs-section">Jobs</a>
     <a routerLink="/my-postings">My Postings</a>
     <a routerLink="/my-bids">My Bids</a>
     <a routerLink="/profile">Profile</a>
-    <button (click)="logout()">Logout</button>
-  }
+    <a routerLink="/platform-stats">Platform Stats</a>
+  </div>
+
+  <button class="logout-btn" (click)="logout()">Logout</button>
+
 </nav>
-<hr>
