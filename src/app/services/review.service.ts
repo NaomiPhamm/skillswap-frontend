@@ -21,4 +21,5 @@ export class ReviewService {
   getUserReviews(userId: string) {
     return this.http.get(`${this.BASE_URL}/reviews/user/${userId}`);
   }
+  
 }
