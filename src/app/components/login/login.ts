@@ -30,7 +30,7 @@ export class Login {
       next: (res: LoginResponse) => {
         console.log('login success', res);
         this.authService.setToken(res.token);
-        this.router.navigate(['/jobs']);
+        this.router.navigate(['/home']);
       },
       error: (err: HttpErrorResponse) => {
         console.log('login error', err);
